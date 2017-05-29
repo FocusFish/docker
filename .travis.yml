@@ -9,7 +9,7 @@ services:
 
 env:
   - TAG=focusfish/base:7 TAG_LATEST=focusfish/base:latest IMAGE=base
-  #- TAG=focusfish/jdk:7 TAG_LATEST=focusfish/jdk:latest IMAGE=jdk
+  - TAG=focusfish/jdk:7 TAG_LATEST=focusfish/jdk:latest IMAGE=jdk
   #- TAG=focusfish/wildfly:8.2.0 TAG_LATEST=focusfish/wildfly:latest IMAGE=wildfly
   #- TAG=focusfish/wildfly-admin:7 TAG_LATEST=focusfish/wildfly-admin:latest IMAGE=wildfly-admin
   #- TAG=focusfish/wildfly-debug:7 TAG_LATEST=focusfish/wildfly-debug:latest IMAGE=wildfly-debug
