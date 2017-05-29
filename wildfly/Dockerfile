@@ -17,6 +17,8 @@ RUN cd $HOME \
     && tar xf wildfly-$WILDFLY_VERSION.tar.gz \
     && mv $HOME/wildfly-$WILDFLY_VERSION $WILDFLY_HOME \
     && rm wildfly-$WILDFLY_VERSION.tar.gz \
+		&& mkdir -p /app/logs ${WILDFLY_HOME}/standalone/log \
+		&& chown -R focus:focus /app/logs \
     && chown -R focus:focus ${WILDFLY_HOME} \
     && chmod -R g+rw ${WILDFLY_HOME}
 
