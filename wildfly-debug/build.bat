@@ -1,1 +1,1 @@
-docker build -t focus/wildfly-debug .
+docker build -t focusfish/wildfly-debug .

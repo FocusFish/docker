@@ -1,4 +1,4 @@
-﻿FROM focus/base:latest
+﻿FROM focusfish/base:latest
 
 # User root user to install software
 USER root

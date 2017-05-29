@@ -1,1 +1,1 @@
-docker build -t focus/wildfly .
+docker build -t focusfish/wildfly .

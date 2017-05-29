@@ -6,15 +6,15 @@ This is an the base wildfy Dockerfile with [WildFly application server](http://w
 
 To boot in standalone mode
 
-    docker run -it focus/wildfly
+    docker run -it focusfish/wildfly
     
 To boot in standalone mode with admin console available remotely
 
-    docker run -p 8080:8080 -p 9990:9990 -it focus/wildfly /opt/focus/wildfly/bin/standalone.sh -bmanagement 0.0.0.0
+    docker run -p 8080:8080 -p 9990:9990 -it focusfish/wildfly /opt/focus/wildfly/bin/standalone.sh -bmanagement 0.0.0.0
 
 To boot in domain mode
 
-    docker run -it focus/wildfly /opt/focus/wildfly/bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0
+    docker run -it focusfish/wildfly /opt/focus/wildfly/bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0
 
 ## Application deployment
 
@@ -59,17 +59,17 @@ Sometimes you need to customize the application server configuration. There are 
 
 To be able to create a management user to access the administration console create a Dockerfile with the following content
 
-    FROM focus/wildfly
+    FROM focusfish/wildfly
     RUN /opt/focus/wildfly/bin/add-user.sh admin Admin#70365 --silent
     CMD ["/opt/focus/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
 
 Then you can build the image:
 
-    docker build --tag=focus/wildfly-admin .
+    docker build --tag=focusfish/wildfly-admin .
 
 Run it:
 
-    docker run -it focus/wildfly-admin
+    docker run -it focusfish/wildfly-admin
 
 Administration console will be available on the port `9990` of the container.
 
@@ -77,20 +77,14 @@ Administration console will be available on the port `9990` of the container.
 
 You don't need to do this on your own, because we prepared a trusted build for this repository, but if you really want:
 
-    docker build --rm=true --tag=focus/wildfly .
+    docker build --rm=true --tag=focusfish/wildfly .
 
-## Image internals [updated Oct 14, 2014]
-
-This image extends the [`focus/base-jdk:8`](https://github.com/focus-dockerfiles/base-jdk/tree/jdk8) image which adds the OpenJDK distribution on top of the [`focus/base`](https://github.com/focus-dockerfiles/base) image. Please refer to the README.md for selected images for more info.
+## Image internals 
+This image extends the [`focusfish/base-jdk:7`](https://github.com/FocusFish/docker/tree/master/jdk) image which adds the OpenJDK distribution on top of the [`focusfish/base`](https://github.com/FocusFish/docker/tree/master/base) image. Please refer to the README.md for selected images for more info.
 
 The server is run as the `focus` user which has the uid/gid set to `1000`.
 
 WildFly is installed in the `/opt/focus/wildfly` directory.
 
-## Source
 
-The source is [available on GitHub](https://github.com/focus-dockerfiles/wildfly).
 
-## Issues
-
-Please report any issues or file RFEs on [GitHub](https://github.com/focus-dockerfiles/wildfly/issues).

@@ -1,1 +1,1 @@
-docker build -t focus/jdk:7 .
+docker build -t focusfish/jdk:7 .

@@ -1,1 +1,1 @@
-docker build -t focus/wildfly-admin .
+docker build -t focusfish/wildfly-admin .
