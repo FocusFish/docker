@@ -1,0 +1,23 @@
+sudo: required
+
+branches:
+  only:
+  - master
+
+services:
+  - docker
+
+env:
+  - TAG=focus/base:7 TAG_LATEST=focus/base:latest IMAGE=base
+  - TAG=focus/jdk:7 TAG_LATEST=focus/jdk:latest IMAGE=jdk
+  - TAG=focus/wildfly:8.2.0 TAG_LATEST=focus/wildfly:latest IMAGE=wildfly
+  - TAG=focus/wildfly-admin:7 TAG_LATEST=focus/wildfly-admin:latest IMAGE=wildfly-admin
+  - TAG=focus/wildfly-debug:7 TAG_LATEST=focus/wildfly-debug:latest IMAGE=wildfly-debug
+  
+script:
+  - docker build -t $TAG -t $TAG_LATEST -t $TAG_FOCUS -t $TAG_FOCUS_LATEST --no-cache $IMAGE
+
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push $TAG;
+    docker push $TAG_LATEST;    
