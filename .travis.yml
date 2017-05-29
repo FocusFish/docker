@@ -15,7 +15,7 @@ env:
   - TAG=focus/wildfly-debug:7 TAG_LATEST=focus/wildfly-debug:latest IMAGE=wildfly-debug
   
 script:
-  - docker build -t $TAG -t $TAG_LATEST -t $TAG_FOCUS -t $TAG_FOCUS_LATEST --no-cache $IMAGE
+  - docker build -t $TAG -t $TAG_LATEST --no-cache $IMAGE
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
