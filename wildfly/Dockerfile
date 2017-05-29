@@ -1,5 +1,5 @@
 # Use latest focus/jdk:7 image as the base
-FROM focus/jdk:7
+FROM focusfish/jdk:7
 
 # Set the WILDFLY_VERSION env variable
 ENV WILDFLY_VERSION 8.2.0.Final
@@ -17,8 +17,8 @@ RUN cd $HOME \
     && tar xf wildfly-$WILDFLY_VERSION.tar.gz \
     && mv $HOME/wildfly-$WILDFLY_VERSION $WILDFLY_HOME \
     && rm wildfly-$WILDFLY_VERSION.tar.gz \
-		&& mkdir -p /app/logs ${WILDFLY_HOME}/standalone/log \
-		&& chown -R focus:focus /app/logs \
+    && mkdir -p /app/logs ${WILDFLY_HOME}/standalone/log \
+    && chown -R focus:focus /app/logs \
     && chown -R focus:focus ${WILDFLY_HOME} \
     && chmod -R g+rw ${WILDFLY_HOME}
 
@@ -36,6 +36,3 @@ VOLUME ["/app/logs", "${WILDFLY_HOME}/standalone/log"]
 # Set the default command to run on boot
 # This will boot WildFly in the standalone mode and bind to all interface
 CMD ["${WILDFLY_HOME}/bin/standalone.sh", "-b", "0.0.0.0"]
-
-
-
